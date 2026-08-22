@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Trocar pelo domínio real antes de publicar (ver PERSONALIZAR.md)
+Sitemap: https://www.espanolymate.com.br/sitemap.xml

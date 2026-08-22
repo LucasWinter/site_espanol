@@ -1,0 +1,127 @@
+# Como colocar os dados reais no site
+
+Este guia é para quem **não é programador**. Tudo que precisa mudar antes de
+publicar a versão final está listado aqui, com o arquivo e o que procurar.
+
+Os dados que estão no site hoje (e-mail, telefone, Instagram, imagens) são
+**exemplos vindos do design** — nenhum deles é real. Precisam ser trocados.
+
+---
+
+## 1. E-mail
+
+**Arquivo:** `index.html`
+**Procure por:** `ola@espanolymate.com.br` — aparece **3 vezes**.
+
+Troque as 3 pelo e-mail verdadeiro. Atenção: em uma delas o endereço aparece
+duas vezes na mesma linha (uma no link, outra no texto que o visitante lê).
+
+O botão "Quero estudar espanhol" da seção de contato abre o programa de e-mail
+já com o assunto preenchido. Para mudar o assunto, edite o trecho depois de
+`?subject=` (espaços viram `%20`).
+
+---
+
+## 2. WhatsApp
+
+**Arquivo:** `index.html`
+**Procure por:** `5551999990000`
+
+Formato do número no link: `55` (Brasil) + DDD sem o zero + número sem traço.
+Exemplo: (51) 98888-7777 → `5551988887777`.
+
+Logo abaixo, troque também o número **visível** `+55 51 99999-0000` pelo formato
+bonito do número real.
+
+A mensagem que já vem escrita para o visitante enviar está depois de `?text=`.
+Para mudar, escreva o texto trocando espaço por `%20` (ou peça para reescrever).
+
+---
+
+## 3. Instagram
+
+**Arquivo:** `index.html`
+**Procure por:** `espanolymate`
+
+Troque nos dois lugares: no endereço `https://instagram.com/...` e no texto
+visível `@espanolymate`.
+
+---
+
+## 4. Imagens
+
+**Pasta:** `assets/img/`
+
+| Arquivo atual | Onde aparece | Foto ideal |
+| --- | --- | --- |
+| `retrato-professora.svg` | Topo da página, à direita | Retrato **vertical** da Betina, luz natural |
+| `ambiente-aula.svg` | Seção "Sobre" | Ambiente de aula ou o chimarrão, **horizontal** |
+| `favicon.svg` | Ícone da aba do navegador | Pode manter |
+
+Os arquivos de hoje são desenhos de exemplo. Para trocar:
+
+1. Salve a foto na pasta `assets/img/` (formato `.jpg` ou `.webp`, largura de
+   1200 a 1600 pixels, até ~400 KB para o site continuar rápido).
+2. No `index.html`, procure por `retrato-professora.svg` e troque pelo nome do
+   novo arquivo, **com a extensão nova** (ex.: `retrato-professora.jpg`).
+3. Faça o mesmo com `ambiente-aula.svg`.
+4. Ajuste o texto do `alt="..."` ao lado, que descreve a foto para quem usa
+   leitor de tela e para o Google.
+
+As fotos são recortadas automaticamente para preencher o espaço, então deixe o
+rosto/assunto mais ou menos no centro.
+
+---
+
+## 5. Endereço do site (domínio)
+
+Depois de apontar o domínio definitivo na Vercel, troque
+`https://www.espanolymate.com.br` em **3 arquivos**:
+
+- `index.html` (aparece 2 vezes, nas linhas de `canonical` e `og:url`)
+- `robots.txt`
+- `sitemap.xml`
+
+Isso é o que faz o link ficar bonito quando alguém compartilha o site no
+WhatsApp ou no Instagram, e ajuda o Google a indexar a página certa.
+
+---
+
+## 6. Ano no rodapé
+
+**Arquivo:** `index.html` — `Professora Betina · 2026`. É um número fixo:
+atualize quando virar o ano.
+
+---
+
+## 7. Imagem de compartilhamento (opcional, ainda não existe)
+
+Quando o site é colado no WhatsApp/Instagram/LinkedIn, aparece um cartão com
+imagem. Hoje esse cartão sai **sem imagem**, porque ainda não temos uma foto
+aprovada. Para ativar:
+
+1. Salve uma imagem de **1200 × 630 pixels** como `assets/img/og-capa.jpg`.
+2. No `index.html`, logo abaixo da linha `<meta name="twitter:card" ...>`,
+   acrescente:
+   `<meta property="og:image" content="https://SEUDOMINIO/assets/img/og-capa.jpg">`
+
+---
+
+## O que NÃO mexer sem falar com o desenvolvedor
+
+- `assets/css/styles.css` — cores, tamanhos e o comportamento no celular.
+- `assets/js/main.js` — o menu do celular.
+- `vercel.json` — regras de segurança da publicação.
+- `design/` — cópia do design original, guardada como referência.
+
+---
+
+## Textos da página
+
+Todo o texto que aparece no site está dentro do `index.html` e pode ser editado
+diretamente — cuidado apenas para não apagar as marcações `<p>`, `<h2>`, etc.
+
+Os depoimentos de alunos ("Marina C." e "Rafael T.") e os números citados
+("8 anos ensinando espanhol") vieram do design de aprovação. **Confirme se são
+reais antes de publicar** — se não forem, troque por depoimentos verdadeiros ou
+retire a seção.

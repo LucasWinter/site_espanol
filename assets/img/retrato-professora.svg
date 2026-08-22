@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1067" width="800" height="1067" role="img" aria-label="Espaço reservado para o retrato da professora">
+  <rect width="800" height="1067" fill="#EBE3D3"/>
+  <rect x="24" y="24" width="752" height="1019" fill="none" stroke="#4C5B39" stroke-opacity=".35" stroke-width="2" stroke-dasharray="10 10"/>
+  <g transform="translate(400 470)" fill="none" stroke="#4C5B39" stroke-opacity=".45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-70 96 C -70 44, -38 18, 0 18 C 38 18, 70 44, 70 96"/>
+    <circle cx="0" cy="-42" r="52"/>
+  </g>
+  <circle cx="612" cy="196" r="26" fill="none" stroke="#A9552F" stroke-opacity=".6" stroke-width="4"/>
+  <text x="400" y="666" text-anchor="middle" font-family="Georgia, 'Source Serif 4', serif" font-size="30" fill="#2B3323" fill-opacity=".62">Retrato da professora</text>
+  <text x="400" y="712" text-anchor="middle" font-family="Georgia, 'Source Serif 4', serif" font-size="26" fill="#2B3323" fill-opacity=".48">vertical, luz natural</text>
+  <text x="400" y="792" text-anchor="middle" font-family="Georgia, 'Source Serif 4', serif" font-size="22" fill="#A9552F" fill-opacity=".8">imagem de exemplo — substituir</text>
+</svg>

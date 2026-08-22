@@ -1,0 +1,19 @@
+# Dependências e artefatos de build
+node_modules/
+dist/
+.cache/
+
+# Vercel
+.vercel
+
+# Ambiente / segredos — nunca versionar
+.env
+.env.*
+!.env.example
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
