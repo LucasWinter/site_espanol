@@ -49,10 +49,23 @@ Tokens definidos no topo de `assets/css/styles.css`, extraídos do design entreg
 Tipografia: **Cormorant Garamond** (títulos), **Source Serif 4** (texto),
 **Caveat** (manuscrita). Carregadas do Google Fonts.
 
-## Publicação
+## Publicação (Vercel)
 
-O repositório está conectado à Vercel. Todo `git push` na branch de produção
-gera um novo deploy; pushes em outras branches geram uma *preview URL*.
+Deploy de teste no ar (preview):
+`https://espanol-y-mate-betina-p2pn99qs6-lucaswinters-projects.vercel.app`
+(projeto Vercel `espanol-y-mate-betina`, conta `lucaswinters-projects`).
+
+Esse deploy foi feito por envio direto dos arquivos. Para que **todo push no
+GitHub gere um novo deploy automático**, falta uma ligação que precisa ser
+feita pelo painel (a integração usada aqui não tem permissão para isso):
+
+1. Vercel → projeto `espanol-y-mate-betina` → **Settings → Git**
+2. **Connect Git Repository** → `LucasWinter/site_espanol`
+3. Em **Production Branch**, escolher a branch que deve ir ao ar
+4. Em **Settings → Domains**, apontar o domínio próprio quando existir
+
+Projetos vazios criados durante as tentativas de conexão e que podem ser
+apagados: `site-espanol`, `site-espanol-y-mate`, `espanol-y-mate`.
 
 ## Segurança
 
