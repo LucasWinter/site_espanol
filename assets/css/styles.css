@@ -237,7 +237,6 @@ a:hover { color: var(--color-accent-700); }
   width: clamp(40px, 3.6vw, 50px);
   height: auto;
   align-self: center;
-  border-radius: 50%;
   flex: none;
 }
 .brand-word {
@@ -588,8 +587,8 @@ a.contato-valor:hover { color: var(--terra); }
   gap: clamp(20px, 3vw, 40px);
   padding: clamp(56px, 6vw, 80px) var(--pad-x) 56px;
 }
-.brand-footer .brand-word { font-size: 21px; }
-.brand-footer .brand-y { font-size: 23px; }
+.brand-footer { display: block; flex: none; }
+.footer-logo { width: clamp(104px, 11vw, 136px); height: auto; }
 .ornament-footer { width: clamp(96px, 11vw, 150px); opacity: .45; }
 .footer-nota { font-size: 15px; color: var(--ink-78); margin: 0; }
 
