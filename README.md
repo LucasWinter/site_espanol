@@ -1,7 +1,7 @@
 # Español y Mate — site da professora Betina
 
-Página institucional de uma professora de espanhol (aulas online individuais e
-programas corporativos presenciais em Porto Alegre).
+Página institucional de uma professora de espanhol (aulas online e programas
+corporativos in company).
 
 Site **estático** — HTML, CSS e um único arquivo JavaScript. Sem framework, sem
 banco de dados, sem dependências para instalar. Hospedagem na Vercel.

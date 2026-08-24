@@ -52,11 +52,18 @@ visível `@espanolymate`.
 
 **Pasta:** `assets/img/`
 
-| Arquivo atual | Onde aparece | Foto ideal |
+| Arquivo atual | Onde aparece | Arquivo ideal |
 | --- | --- | --- |
+| `logo.svg` | Cabeçalho **e** ícone da aba | Logo oficial, **quadrado**, fundo transparente |
 | `retrato-professora.svg` | Topo da página, à direita | Retrato **vertical** da Betina, luz natural |
 | `ambiente-aula.svg` | Seção "Sobre" | Ambiente de aula ou o chimarrão, **horizontal** |
-| `favicon.svg` | Ícone da aba do navegador | Pode manter |
+| `favicon.svg` | Não é mais usado | Pode apagar |
+
+**Logo:** o arquivo `logo.svg` de hoje é um desenho provisório (só um círculo com
+"EyM"). Assim que o logo oficial entrar nessa pasta com o mesmo nome, ele aparece
+sozinho no cabeçalho e na aba do navegador — não precisa mexer em código. Se o
+arquivo real for `.png`, salve como `logo.png` e troque as **3** aparições de
+`logo.svg` no `index.html`.
 
 Os arquivos de hoje são desenhos de exemplo. Para trocar:
 
@@ -121,7 +128,10 @@ aprovada. Para ativar:
 Todo o texto que aparece no site está dentro do `index.html` e pode ser editado
 diretamente — cuidado apenas para não apagar as marcações `<p>`, `<h2>`, etc.
 
-Os depoimentos de alunos ("Marina C." e "Rafael T.") e os números citados
-("8 anos ensinando espanhol") vieram do design de aprovação. **Confirme se são
-reais antes de publicar** — se não forem, troque por depoimentos verdadeiros ou
-retire a seção.
+Os depoimentos de alunos ("Marina C." e "Rafael T.") vieram do design de
+aprovação. **Confirme se são reais antes de publicar** — se não forem, troque por
+depoimentos verdadeiros ou retire a seção.
+
+O parágrafo de apresentação da seção "Sobre" está **genérico de propósito**: não
+cita formação, tempo de experiência nem cidade, porque esses dados ainda não
+foram confirmados. Reescreva com os dados verdadeiros quando quiser.
