@@ -3,8 +3,10 @@
 Este guia é para quem **não é programador**. Tudo que precisa mudar antes de
 publicar a versão final está listado aqui, com o arquivo e o que procurar.
 
-Os dados que estão no site hoje (e-mail, telefone, Instagram, imagens) são
-**exemplos vindos do design** — nenhum deles é real. Precisam ser trocados.
+Já estão **corretos** no site: o WhatsApp e o perfil do Instagram.
+
+Ainda são **exemplos e precisam ser trocados**: o e-mail, as imagens (retrato,
+ambiente de aula, logo e os posts do Instagram) e o endereço do site.
 
 ---
 
@@ -22,29 +24,51 @@ já com o assunto preenchido. Para mudar o assunto, edite o trecho depois de
 
 ---
 
-## 2. WhatsApp
+## 2. WhatsApp — já está o número real
 
 **Arquivo:** `index.html`
-**Procure por:** `5551999990000`
+**Está no site:** `+55 54 99631-5393` (o número que aparece no logo).
 
-Formato do número no link: `55` (Brasil) + DDD sem o zero + número sem traço.
-Exemplo: (51) 98888-7777 → `5551988887777`.
-
-Logo abaixo, troque também o número **visível** `+55 51 99999-0000` pelo formato
-bonito do número real.
+Se algum dia mudar, troque nos **dois** lugares da mesma linha: o número do link
+(`wa.me/5554996315393`) e o número visível. Formato do link: `55` (Brasil) + DDD
+sem o zero + número sem traço.
 
 A mensagem que já vem escrita para o visitante enviar está depois de `?text=`.
 Para mudar, escreva o texto trocando espaço por `%20` (ou peça para reescrever).
 
 ---
 
-## 3. Instagram
+## 3. Instagram — já está o perfil real
 
 **Arquivo:** `index.html`
-**Procure por:** `espanolymate`
+**Está no site:** `@betina.simon.9`, em **3 lugares** (na lista de contato, no
+botão "Seguir" e nos posts).
 
-Troque nos dois lugares: no endereço `https://instagram.com/...` e no texto
-visível `@espanolymate`.
+---
+
+## 3b. Os posts do Instagram no final da página
+
+A faixa de posts no final do site **não puxa o Instagram sozinha** — cada post é
+colocado à mão. Isso é de propósito: assim o site não carrega nenhum programa de
+rastreamento do Instagram, continua rápido e mantém as regras de segurança.
+
+São **6 posts**. Para cada um, no `index.html`, procure por
+`Post de exemplo 1`, `Post de exemplo 2`, e assim por diante. Em cada bloco:
+
+1. **Imagem:** salve a foto do post em `assets/img/instagram/` (quadrada, uns
+   800×800 pixels) e troque `post-exemplo.svg` pelo nome do arquivo novo.
+2. **Link:** abra o post no Instagram, copie o endereço da barra do navegador e
+   cole no lugar de `https://www.instagram.com/betina.simon.9`.
+3. **Legenda:** troque o texto `Post de exemplo 1 — trocar imagem e link` por uma
+   frase curta sobre o post.
+
+Quer mais ou menos de 6 posts? Copie ou apague um bloco `<li class="insta-item">`
+inteiro — a faixa se ajusta sozinha.
+
+> **Quer que atualize automático?** Dá para fazer, mas exige colocar o programa
+> oficial do Instagram na página, o que carrega rastreadores da Meta, deixa o
+> site mais lento e obriga a afrouxar as regras de segurança. Fale com o
+> desenvolvedor se quiser seguir por esse caminho.
 
 ---
 

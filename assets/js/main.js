@@ -70,3 +70,49 @@
     wide.addListener(onChange);
   }
 })();
+
+/*
+ * Carrossel do Instagram: as setas rolam a faixa de um post por vez.
+ * No celular a rolagem é o próprio gesto de arrastar — as setas ficam ocultas.
+ * Sem o script, a faixa continua rolável: nada deixa de funcionar.
+ */
+(function () {
+  'use strict';
+
+  var track = document.getElementById('insta-track');
+  var prev = document.getElementById('insta-prev');
+  var next = document.getElementById('insta-next');
+
+  if (!track || !prev || !next) return;
+
+  function passo() {
+    var item = track.querySelector('.insta-item');
+    if (!item) return track.clientWidth;
+    var estilo = window.getComputedStyle(track);
+    var vao = parseFloat(estilo.columnGap || estilo.gap) || 0;
+    return item.getBoundingClientRect().width + vao;
+  }
+
+  function rolar(direcao) {
+    var distancia = passo() * direcao;
+    if (typeof track.scrollBy === 'function') {
+      track.scrollBy({ left: distancia, behavior: 'smooth' });
+    } else {
+      track.scrollLeft += distancia;
+    }
+  }
+
+  // Desliga a seta que não tem mais para onde ir
+  function atualizar() {
+    var fim = track.scrollWidth - track.clientWidth;
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= fim - 2;
+  }
+
+  prev.addEventListener('click', function () { rolar(-1); });
+  next.addEventListener('click', function () { rolar(1); });
+  track.addEventListener('scroll', atualizar, { passive: true });
+  window.addEventListener('resize', atualizar);
+
+  atualizar();
+})();
