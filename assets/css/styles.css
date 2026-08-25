@@ -646,7 +646,31 @@ a.contato-valor:hover { color: var(--terra); }
   background: var(--olive-line);
   border-radius: 6px;
 }
-.insta-item { scroll-snap-align: start; }
+.insta-item {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Post de verdade, dentro do quadro do Instagram */
+.insta-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 320 / 438;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--paper-2);
+}
+.insta-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.insta-ver-link { display: block; }
+.insta-ver-link:hover { color: var(--color-accent-700); }
 
 .insta-post {
   display: flex;

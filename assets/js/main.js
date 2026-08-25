@@ -116,3 +116,57 @@
 
   atualizar();
 })();
+
+/*
+ * Posts do Instagram: cada <li class="insta-item"> tem um data-post="".
+ * Colando o link do post ali, o card vira o post de verdade, ao vivo, dentro de
+ * um quadro do próprio Instagram. Vazio, fica o card de exemplo que já está no
+ * HTML — o site nunca aparece quebrado.
+ *
+ * Só o quadro é do Instagram: nenhum script da Meta roda dentro do site.
+ */
+(function () {
+  'use strict';
+
+  var itens = document.querySelectorAll('.insta-item[data-post]');
+  if (!itens.length) return;
+
+  // Aceita o link inteiro (post, reel ou tv) ou só o código do post
+  function codigoDoPost(valor) {
+    var texto = String(valor || '').trim();
+    if (!texto) return '';
+    var achado = texto.match(/instagram\.com\/(?:p|reel|reels|tv)\/([A-Za-z0-9_-]+)/);
+    if (achado) return achado[1];
+    return /^[A-Za-z0-9_-]{6,}$/.test(texto) ? texto : '';
+  }
+
+  Array.prototype.forEach.call(itens, function (item, indice) {
+    var codigo = codigoDoPost(item.getAttribute('data-post'));
+    if (!codigo) return;
+
+    var endereco = 'https://www.instagram.com/p/' + codigo + '/';
+
+    var caixa = document.createElement('div');
+    caixa.className = 'insta-embed';
+
+    var quadro = document.createElement('iframe');
+    quadro.src = endereco + 'embed/';
+    quadro.title = 'Post ' + (indice + 1) + ' do Instagram de @betina.simon.9';
+    quadro.loading = 'lazy';
+    quadro.referrerPolicy = 'strict-origin-when-cross-origin';
+    quadro.setAttribute('frameborder', '0');
+    quadro.setAttribute('scrolling', 'no');
+    caixa.appendChild(quadro);
+
+    var link = document.createElement('a');
+    link.className = 'insta-ver insta-ver-link';
+    link.href = endereco;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = 'Ver no Instagram';
+
+    item.textContent = '';
+    item.appendChild(caixa);
+    item.appendChild(link);
+  });
+})();

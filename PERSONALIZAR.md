@@ -48,27 +48,43 @@ botão "Seguir" e nos posts).
 
 ## 3b. Os posts do Instagram no final da página
 
-A faixa de posts no final do site **não puxa o Instagram sozinha** — cada post é
-colocado à mão. Isso é de propósito: assim o site não carrega nenhum programa de
-rastreamento do Instagram, continua rápido e mantém as regras de segurança.
+A faixa de posts mostra os **posts de verdade**, ao vivo, dentro de um quadro do
+próprio Instagram: se a legenda ou a foto mudarem lá, mudam aqui sozinhas.
 
-São **6 posts**. Para cada um, no `index.html`, procure por
-`Post de exemplo 1`, `Post de exemplo 2`, e assim por diante. Em cada bloco:
+Para ligar cada um dos 6 posts:
 
-1. **Imagem:** salve a foto do post em `assets/img/instagram/` (quadrada, uns
-   800×800 pixels) e troque `post-exemplo.svg` pelo nome do arquivo novo.
-2. **Link:** abra o post no Instagram, copie o endereço da barra do navegador e
-   cole no lugar de `https://www.instagram.com/betina.simon.9`.
-3. **Legenda:** troque o texto `Post de exemplo 1 — trocar imagem e link` por uma
-   frase curta sobre o post.
+1. Abra o post no Instagram e copie o endereço da barra do navegador
+   (ex.: `https://www.instagram.com/p/C8xYz-1AbCd/`). **Não precisa estar logado.**
+2. No `index.html`, procure por `POST 1`, `POST 2`, e assim por diante.
+3. Logo acima de cada comentário tem `data-post=""`. Cole o link **dentro das
+   aspas**. Fica assim:
+
+   `<li class="insta-item" data-post="https://www.instagram.com/p/C8xYz-1AbCd/">`
+
+4. Salve. Pronto — aquele card vira o post de verdade.
+
+Enquanto um `data-post` estiver vazio, aquele card mostra a imagem de exemplo.
+O site nunca fica quebrado no meio do caminho.
 
 Quer mais ou menos de 6 posts? Copie ou apague um bloco `<li class="insta-item">`
 inteiro — a faixa se ajusta sozinha.
 
-> **Quer que atualize automático?** Dá para fazer, mas exige colocar o programa
-> oficial do Instagram na página, o que carrega rastreadores da Meta, deixa o
-> site mais lento e obriga a afrouxar as regras de segurança. Fale com o
-> desenvolvedor se quiser seguir por esse caminho.
+### Por que não atualiza sozinho com os posts mais recentes
+
+O Instagram **não oferece** um jeito público de listar os últimos posts de um
+perfil. Para isso, alguém precisaria entrar na conta uma vez e autorizar um
+serviço — não tem como contornar, é regra da Meta, não limitação do site.
+
+O que temos aqui é o meio-termo: os posts escolhidos aparecem ao vivo e sempre
+atualizados, e trocar quais posts aparecem é colar 6 links de vez em quando.
+
+### O que isso mudou na segurança
+
+Foi liberada **uma única coisa**: a permissão de exibir o quadro do Instagram
+dentro da página (`frame-src`). **Nenhum script da Meta roda no site** — a
+maioria dos sites instala o programa do Instagram, que é bem mais invasivo e
+pesado; aqui não. O Instagram grava cookies próprios dentro do quadro dele, como
+acontece em qualquer site que mostra post de rede social.
 
 ---
 
@@ -78,16 +94,16 @@ inteiro — a faixa se ajusta sozinha.
 
 | Arquivo atual | Onde aparece | Arquivo ideal |
 | --- | --- | --- |
-| `logo.svg` | Cabeçalho **e** ícone da aba | Logo oficial, **quadrado**, fundo transparente |
+| `logo.svg` | Cabeçalho, rodapé **e** ícone da aba | Logo oficial, **colorido**, fundo transparente |
 | `retrato-professora.svg` | Topo da página, à direita | Retrato **vertical** da Betina, luz natural |
 | `ambiente-aula.svg` | Seção "Sobre" | Ambiente de aula ou o chimarrão, **horizontal** |
 | `favicon.svg` | Não é mais usado | Pode apagar |
 
-**Logo:** o arquivo `logo.svg` de hoje é um desenho provisório (só um círculo com
-"EyM"). Assim que o logo oficial entrar nessa pasta com o mesmo nome, ele aparece
-sozinho no cabeçalho e na aba do navegador — não precisa mexer em código. Se o
-arquivo real for `.png`, salve como `logo.png` e troque as **3** aparições de
-`logo.svg` no `index.html`.
+**Logo:** o arquivo `logo.svg` que está no site hoje ficou **todo preto** — a
+conversão para vetor perdeu o verde e o terracota. Substitua por uma versão
+colorida (SVG do arquivo original, ou PNG com fundo transparente) usando o mesmo
+nome, e ele troca sozinho nos 3 lugares. Se for `.png`, salve como `logo.png` e
+troque as **3** aparições de `logo.svg` no `index.html`.
 
 Os arquivos de hoje são desenhos de exemplo. Para trocar:
 
