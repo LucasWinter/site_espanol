@@ -1,7 +1,22 @@
 /*
- * Español y Mate — comportamento da navegação em telas pequenas.
- * Único script do site: abre e fecha o menu, com teclado e leitores de tela.
+ * Español y Mate — os três comportamentos da página.
  * Sem bibliotecas externas e sem coleta de dados.
+ */
+
+/*
+ * 1. Fontes do Google: o <link> vem como "preload" para não travar o desenho
+ * da página. Aqui ele vira folha de estilo de verdade, já com o HTML lido.
+ * Sem JavaScript, o <noscript> do index.html faz o mesmo papel.
+ */
+(function () {
+  'use strict';
+  var fonte = document.getElementById('fonte-google');
+  if (fonte && fonte.rel === 'preload') fonte.rel = 'stylesheet';
+})();
+
+/*
+ * Español y Mate — comportamento da navegação em telas pequenas.
+ * 2. Menu do celular: abre e fecha, com teclado e leitores de tela.
  */
 (function () {
   'use strict';
@@ -72,56 +87,12 @@
 })();
 
 /*
- * Carrossel do Instagram: as setas rolam a faixa de um post por vez.
- * No celular a rolagem é o próprio gesto de arrastar — as setas ficam ocultas.
- * Sem o script, a faixa continua rolável: nada deixa de funcionar.
- */
-(function () {
-  'use strict';
-
-  var track = document.getElementById('insta-track');
-  var prev = document.getElementById('insta-prev');
-  var next = document.getElementById('insta-next');
-
-  if (!track || !prev || !next) return;
-
-  function passo() {
-    var item = track.querySelector('.insta-item');
-    if (!item) return track.clientWidth;
-    var estilo = window.getComputedStyle(track);
-    var vao = parseFloat(estilo.columnGap || estilo.gap) || 0;
-    return item.getBoundingClientRect().width + vao;
-  }
-
-  function rolar(direcao) {
-    var distancia = passo() * direcao;
-    if (typeof track.scrollBy === 'function') {
-      track.scrollBy({ left: distancia, behavior: 'smooth' });
-    } else {
-      track.scrollLeft += distancia;
-    }
-  }
-
-  // Desliga a seta que não tem mais para onde ir
-  function atualizar() {
-    var fim = track.scrollWidth - track.clientWidth;
-    prev.disabled = track.scrollLeft <= 2;
-    next.disabled = track.scrollLeft >= fim - 2;
-  }
-
-  prev.addEventListener('click', function () { rolar(-1); });
-  next.addEventListener('click', function () { rolar(1); });
-  track.addEventListener('scroll', atualizar, { passive: true });
-  window.addEventListener('resize', atualizar);
-
-  atualizar();
-})();
-
-/*
- * Posts do Instagram: cada <li class="insta-item"> tem um data-post="".
- * Colando o link do post ali, o card vira o post de verdade, ao vivo, dentro de
- * um quadro do próprio Instagram. Vazio, fica o card de exemplo que já está no
- * HTML — o site nunca aparece quebrado.
+ * 3. Posts do Instagram: cada <li class="insta-item"> tem um data-post com o
+ * endereço do post. O quadro do próprio Instagram só é criado quando a seção
+ * chega perto da tela — assim o carregamento da página não paga por ele.
+ *
+ * Sem JavaScript, ficam os cartões que já estão no HTML, cada um linkando para
+ * o post: o site nunca aparece quebrado.
  *
  * Só o quadro é do Instagram: nenhum script da Meta roda dentro do site.
  */
@@ -132,26 +103,29 @@
   if (!itens.length) return;
 
   // Aceita o link inteiro (post, reel ou tv) ou só o código do post
-  function codigoDoPost(valor) {
+  function endereco(valor) {
     var texto = String(valor || '').trim();
     if (!texto) return '';
-    var achado = texto.match(/instagram\.com\/(?:p|reel|reels|tv)\/([A-Za-z0-9_-]+)/);
-    if (achado) return achado[1];
-    return /^[A-Za-z0-9_-]{6,}$/.test(texto) ? texto : '';
+    var achado = texto.match(/instagram\.com\/(p|reel|reels|tv)\/([A-Za-z0-9_-]+)/);
+    if (achado) {
+      var tipo = achado[1] === 'reels' ? 'reel' : achado[1];
+      return 'https://www.instagram.com/' + tipo + '/' + achado[2] + '/';
+    }
+    return /^[A-Za-z0-9_-]{6,}$/.test(texto) ? 'https://www.instagram.com/p/' + texto + '/' : '';
   }
 
-  Array.prototype.forEach.call(itens, function (item, indice) {
-    var codigo = codigoDoPost(item.getAttribute('data-post'));
-    if (!codigo) return;
-
-    var endereco = 'https://www.instagram.com/p/' + codigo + '/';
+  function montar(item, indice) {
+    if (item.getAttribute('data-montado')) return;
+    var url = endereco(item.getAttribute('data-post'));
+    if (!url) return;
+    item.setAttribute('data-montado', 'sim');
 
     var caixa = document.createElement('div');
     caixa.className = 'insta-embed';
 
     var quadro = document.createElement('iframe');
-    quadro.src = endereco + 'embed/';
-    quadro.title = 'Post ' + (indice + 1) + ' do Instagram de @betina.simon.9';
+    quadro.src = url + 'embed/';
+    quadro.title = 'Publicação ' + (indice + 1) + ' do Instagram de @betina.simon.9';
     quadro.loading = 'lazy';
     quadro.referrerPolicy = 'strict-origin-when-cross-origin';
     quadro.setAttribute('frameborder', '0');
@@ -160,13 +134,31 @@
 
     var link = document.createElement('a');
     link.className = 'insta-ver insta-ver-link';
-    link.href = endereco;
+    link.href = url;
     link.target = '_blank';
     link.rel = 'noopener';
     link.textContent = 'Ver no Instagram';
+    link.setAttribute('aria-label', 'Ver a publicação ' + (indice + 1) + ' no Instagram de @betina.simon.9');
 
     item.textContent = '';
     item.appendChild(caixa);
     item.appendChild(link);
-  });
+  }
+
+  var lista = Array.prototype.slice.call(itens);
+
+  if (typeof window.IntersectionObserver !== 'function') {
+    lista.forEach(montar);
+    return;
+  }
+
+  var observador = new IntersectionObserver(function (entradas) {
+    entradas.forEach(function (entrada) {
+      if (!entrada.isIntersecting) return;
+      observador.unobserve(entrada.target);
+      montar(entrada.target, lista.indexOf(entrada.target));
+    });
+  }, { rootMargin: '500px 0px' });
+
+  lista.forEach(function (item) { observador.observe(item); });
 })();

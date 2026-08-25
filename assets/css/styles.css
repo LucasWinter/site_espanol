@@ -582,82 +582,71 @@ a.contato-valor:hover { color: var(--terra); }
    -------------------------------------------------------------------------- */
 .site-footer {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: clamp(20px, 3vw, 40px);
-  padding: clamp(56px, 6vw, 80px) var(--pad-x) 56px;
+  padding: clamp(36px, 4vw, 52px) var(--pad-x) clamp(36px, 4vw, 48px);
+  border-top: 1px solid var(--color-divider);
 }
 .brand-footer { display: block; flex: none; }
-.footer-logo { width: clamp(104px, 11vw, 136px); height: auto; }
-.ornament-footer { width: clamp(96px, 11vw, 150px); opacity: .45; }
+.footer-logo { width: clamp(64px, 6vw, 82px); height: auto; }
+.ornament-footer { width: clamp(88px, 9vw, 120px); opacity: .45; }
 .footer-nota { font-size: 15px; color: var(--ink-78); margin: 0; }
 
 
 /* --------------------------------------------------------------------------
-   13b. Instagram — carrossel horizontal
+   13b. Instagram — três posts, linha única no computador
    -------------------------------------------------------------------------- */
 .section-instagram {
-  padding-block: 0 var(--section-gap);
   border-top: 1px solid var(--color-divider);
-  padding-top: var(--section-gap);
+  padding-block: var(--section-gap) clamp(44px, 5vw, 68px);
 }
 .insta-head {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 24px;
+  gap: 16px 32px;
   flex-wrap: wrap;
-  margin-bottom: clamp(28px, 3.4vw, 44px);
+  max-width: 1180px;
+  margin-bottom: clamp(26px, 3vw, 40px);
 }
-.h2-instagram { max-width: 16ch; margin: 0; }
-.insta-head-acoes {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex: none;
-}
+.h2-instagram { max-width: 20ch; margin: 0; }
 .insta-perfil { flex: none; }
-.insta-setas { display: none; gap: 10px; }
 
-.insta-carrossel {
-  position: relative;
-  --insta-gap: clamp(14px, 1.6vw, 22px);
-}
-
-.insta-track {
+/* Três colunas onde couberem os 320px mínimos do quadro do Instagram;
+   abaixo disso o navegador reduz para duas e depois para uma. */
+.insta-grid {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: calc((100% - 2 * var(--insta-gap)) / 3);
-  gap: var(--insta-gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(18px, 2vw, 28px);
+  max-width: 1180px;
   margin: 0;
-  padding: 2px 2px 18px;
+  padding: 0;
   list-style: none;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--olive-line) transparent;
-}
-.insta-track::-webkit-scrollbar { height: 6px; }
-.insta-track::-webkit-scrollbar-track { background: transparent; }
-.insta-track::-webkit-scrollbar-thumb {
-  background: var(--olive-line);
-  border-radius: 6px;
 }
 .insta-item {
-  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  min-width: 0;
+  /* Sozinho numa coluna larga, o cartão não vira um pôster */
+  max-width: 400px;
 }
 
-/* Post de verdade, dentro do quadro do Instagram */
-.insta-embed {
+.insta-post {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  color: var(--ink);
+}
+
+/* Quadro do post: mesma proporção nos três, para a linha ficar reta */
+.insta-embed,
+.insta-thumb {
   position: relative;
   width: 100%;
-  aspect-ratio: 320 / 438;
+  aspect-ratio: 5 / 7;
   border-radius: 2px;
   overflow: hidden;
   background: var(--paper-2);
@@ -669,69 +658,38 @@ a.contato-valor:hover { color: var(--terra); }
   height: 100%;
   border: 0;
 }
-.insta-ver-link { display: block; }
-.insta-ver-link:hover { color: var(--color-accent-700); }
 
-.insta-post {
+/* Cartão que aparece antes de o quadro carregar — e para quem está sem
+   JavaScript. Nunca fica um buraco vazio na página. */
+.insta-thumb {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  height: 100%;
-  color: var(--ink);
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border: 1px solid var(--olive-line);
+  color: var(--olive);
+  text-align: center;
+  transition: background-color .18s ease;
 }
-.insta-thumb {
-  display: block;
-  position: relative;
-  border-radius: 2px;
-  overflow: hidden;
-  background: var(--paper-2);
-  aspect-ratio: 1 / 1;
+.insta-glifo { width: 38px; height: 38px; opacity: .5; }
+.insta-thumb-texto {
+  font-size: 15px;
+  color: var(--ink-76);
+  max-width: 22ch;
 }
-.insta-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .35s ease, opacity .25s ease;
-}
-.insta-post:hover .insta-thumb img,
-.insta-post:focus-visible .insta-thumb img { transform: scale(1.04); }
+.insta-post:hover .insta-thumb { background: var(--color-accent-2-100); }
 
-.insta-legenda {
-  font-size: 16px;
-  line-height: 1.45;
-  color: var(--ink-78);
-}
 .insta-ver {
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 16px;
   color: var(--terra);
   margin-top: auto;
-  padding-top: 4px;
 }
-.insta-post:hover .insta-ver { color: var(--color-accent-700); }
-
-/* Setas — só no desktop, onde não existe o gesto de arrastar */
-.insta-seta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  padding: 0;
-  border: 1px solid var(--olive-line);
-  border-radius: 50%;
-  background: var(--paper);
-  color: var(--olive);
-  cursor: pointer;
-  transition: background .18s ease, color .18s ease, opacity .18s ease;
-}
-.insta-seta:hover:not(:disabled) { background: var(--color-accent-2-100); color: var(--ink); }
-.insta-seta:disabled { opacity: .3; cursor: default; }
-
-@media (min-width: 961px) {
-  .insta-setas { display: flex; }
-}
+.insta-ver-link { display: block; }
+.insta-post:hover .insta-ver,
+.insta-ver-link:hover { color: var(--color-accent-700); }
 
 /* ==========================================================================
    14. Responsivo
@@ -805,9 +763,9 @@ a.contato-valor:hover { color: var(--terra); }
   .grid-2 { grid-template-columns: 1fr; }
   .paraquem { grid-template-columns: repeat(2, 1fr); }
 
-  .insta-track { grid-auto-columns: 46%; }
+  /* Do tablet para baixo os posts ficam um abaixo do outro */
+  .insta-grid { grid-template-columns: minmax(0, 400px); }
   .insta-head { align-items: flex-start; flex-direction: column; }
-  .insta-head-acoes { width: 100%; justify-content: space-between; }
   .faq { grid-template-columns: 1fr; }
 
   .section-contato { grid-template-columns: 1fr; }
@@ -829,8 +787,6 @@ a.contato-valor:hover { color: var(--terra); }
   .paraquem { grid-template-columns: 1fr; }
   .passos { grid-template-columns: 1fr; gap: 32px; }
 
-  .insta-track { grid-auto-columns: 76%; }
-
   .section-contato .btn { width: 100%; }
 
   .site-footer {
@@ -839,6 +795,10 @@ a.contato-valor:hover { color: var(--terra); }
     gap: 24px;
   }
   .ornament-footer { order: 3; }
+}
+
+@media (max-width: 400px) {
+  .insta-grid { margin-inline: -8px; }
 }
 
 @media (max-width: 380px) {
@@ -850,7 +810,7 @@ a.contato-valor:hover { color: var(--terra); }
 
 /* Impressão */
 @media print {
-  .site-header, .nav-toggle, .nav-backdrop, .skip-link, .ornament, .insta-setas { display: none !important; }
+  .site-header, .nav-toggle, .nav-backdrop, .skip-link, .ornament { display: none !important; }
   body { background: #fff; }
   .section, .hero { padding-inline: 0; }
 }
@@ -858,7 +818,6 @@ a.contato-valor:hover { color: var(--terra); }
 /* Respeito à preferência de menos movimento */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .insta-track { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;

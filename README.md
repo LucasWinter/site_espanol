@@ -15,7 +15,7 @@ banco de dados, sem dependências para instalar. Hospedagem na Vercel.
 ```
 index.html               A página inteira (todas as seções)
 assets/css/styles.css    Toda a aparência: cores, fontes, espaçamentos, responsivo
-assets/js/main.js        Só o menu de navegação do celular
+assets/js/main.js        Menu do celular e os quadros do Instagram
 assets/img/              Imagens (hoje são exemplos, para substituir)
 vercel.json              Configuração de publicação e cabeçalhos de segurança
 robots.txt / sitemap.xml Indexação em buscadores
@@ -49,6 +49,25 @@ Tokens definidos no topo de `assets/css/styles.css`, extraídos do design entreg
 Tipografia: **Cormorant Garamond** (títulos), **Source Serif 4** (texto),
 **Caveat** (manuscrita). Carregadas do Google Fonts.
 
+## Desempenho
+
+Página estática, sem framework: o carregamento inicial são 7 arquivos e ~77 kB,
+com primeiro desenho em torno de 150 ms e nenhum deslocamento de layout
+(imagens e quadros têm dimensão reservada).
+
+Três cuidados que sustentam isso e não devem ser desfeitos sem motivo:
+
+- **Fontes não bloqueiam o desenho.** O `<link>` do Google Fonts entra como
+  `rel="preload"` e o `main.js` o promove a folha de estilo (o `<noscript>` cobre
+  quem está sem JavaScript). Sem isso, uma rede que filtre o Google — comum em
+  empresa — deixa a página em branco até o pedido expirar.
+- **Os quadros do Instagram só são criados perto da hora de aparecer**
+  (`IntersectionObserver`). Quem não desce até o final não carrega nada da Meta.
+- **Só os pesos de fonte que a folha de estilo usa** são pedidos ao Google.
+
+Próximo passo possível, se um dia quiser cortar o terceiro domínio de vez:
+hospedar os `.woff2` em `assets/fonts/` e apagar o `preconnect` do Google.
+
 ## Publicação (Vercel)
 
 Deploy de teste no ar (preview):
@@ -71,7 +90,9 @@ apagados: `site-espanol`, `site-espanol-y-mate`, `espanol-y-mate`.
 
 - Site 100% estático: não recebe dados de visitantes, não tem formulário,
   banco de dados nem área logada.
-- Nenhum rastreador, nenhum cookie, nenhuma biblioteca de terceiros no JavaScript.
+- Nenhum rastreador e nenhuma biblioteca de terceiros no JavaScript. O site em
+  si não grava cookies; os quadros do Instagram no final da página gravam os
+  cookies deles dentro do próprio quadro (ver PERSONALIZAR.md).
 - `vercel.json` aplica CSP, `X-Content-Type-Options`, `X-Frame-Options`,
   `Referrer-Policy`, `Permissions-Policy` e HSTS.
 - Links externos usam `rel="noopener"`.

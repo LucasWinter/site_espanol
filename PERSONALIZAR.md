@@ -3,10 +3,11 @@
 Este guia é para quem **não é programador**. Tudo que precisa mudar antes de
 publicar a versão final está listado aqui, com o arquivo e o que procurar.
 
-Já estão **corretos** no site: o WhatsApp e o perfil do Instagram.
+Já estão **corretos** no site: o WhatsApp, o perfil do Instagram e os 3 posts
+que aparecem no final da página.
 
 Ainda são **exemplos e precisam ser trocados**: o e-mail, as imagens (retrato,
-ambiente de aula, logo e os posts do Instagram) e o endereço do site.
+ambiente de aula e logo) e o endereço do site.
 
 ---
 
@@ -41,33 +42,48 @@ Para mudar, escreva o texto trocando espaço por `%20` (ou peça para reescrever
 ## 3. Instagram — já está o perfil real
 
 **Arquivo:** `index.html`
-**Está no site:** `@betina.simon.9`, em **3 lugares** (na lista de contato, no
-botão "Seguir" e nos posts).
+**Está no site:** `@betina.simon.9`, na lista de contato e no botão "Seguir".
 
 ---
 
 ## 3b. Os posts do Instagram no final da página
 
-A faixa de posts mostra os **posts de verdade**, ao vivo, dentro de um quadro do
-próprio Instagram: se a legenda ou a foto mudarem lá, mudam aqui sozinhas.
+São **3 posts**, lado a lado no computador e um abaixo do outro no celular.
+Eles aparecem **ao vivo**, dentro de um quadro do próprio Instagram: se a
+legenda ou a foto mudarem lá, mudam aqui sozinhas.
 
-Para ligar cada um dos 6 posts:
+Os 3 que estão no ar hoje:
+
+1. `https://www.instagram.com/reel/DGa4V3hxFPY/`
+2. `https://www.instagram.com/p/DFGk_b2SzQl/`
+3. `https://www.instagram.com/p/CYFNL9JvnFH/`
+
+Para trocar qualquer um deles:
 
 1. Abra o post no Instagram e copie o endereço da barra do navegador
    (ex.: `https://www.instagram.com/p/C8xYz-1AbCd/`). **Não precisa estar logado.**
-2. No `index.html`, procure por `POST 1`, `POST 2`, e assim por diante.
-3. Logo acima de cada comentário tem `data-post=""`. Cole o link **dentro das
-   aspas**. Fica assim:
+2. No `index.html`, procure por `POST 1`, `POST 2` ou `POST 3`.
+3. Logo acima de cada comentário tem `data-post="..."`. Troque o endereço que
+   está **dentro das aspas**. Fica assim:
 
    `<li class="insta-item" data-post="https://www.instagram.com/p/C8xYz-1AbCd/">`
 
-4. Salve. Pronto — aquele card vira o post de verdade.
+4. Salve. Pronto — aquele card passa a mostrar o outro post.
 
-Enquanto um `data-post` estiver vazio, aquele card mostra a imagem de exemplo.
-O site nunca fica quebrado no meio do caminho.
+Serve link de post (`/p/...`) e de reel (`/reel/...`).
 
-Quer mais ou menos de 6 posts? Copie ou apague um bloco `<li class="insta-item">`
-inteiro — a faixa se ajusta sozinha.
+Se um `data-post` ficar vazio ou com um endereço errado, aquele card mostra um
+cartão discreto com o símbolo do Instagram, que leva ao perfil. O site nunca
+fica quebrado no meio do caminho.
+
+**Quantos posts?** Três é o número que fecha uma linha certinha no computador.
+Dá para copiar ou apagar um bloco `<li class="insta-item">` inteiro, mas com 4
+ou 5 a última linha fica incompleta.
+
+**Dica sobre o formato:** os três cartões têm a mesma altura, para a linha ficar
+reta. Posts quadrados e no formato 4:5 cabem inteiros; um reel em pé aparece
+cortado embaixo (o começo do vídeo, que é o que interessa). Se quiser tudo
+aparecendo inteiro, prefira posts quadrados ou 4:5.
 
 ### Por que não atualiza sozinho com os posts mais recentes
 
@@ -76,15 +92,19 @@ perfil. Para isso, alguém precisaria entrar na conta uma vez e autorizar um
 serviço — não tem como contornar, é regra da Meta, não limitação do site.
 
 O que temos aqui é o meio-termo: os posts escolhidos aparecem ao vivo e sempre
-atualizados, e trocar quais posts aparecem é colar 6 links de vez em quando.
+atualizados, e trocar quais posts aparecem é colar 3 links de vez em quando.
 
-### O que isso mudou na segurança
+### O que isso mudou na segurança e na velocidade
 
 Foi liberada **uma única coisa**: a permissão de exibir o quadro do Instagram
 dentro da página (`frame-src`). **Nenhum script da Meta roda no site** — a
 maioria dos sites instala o programa do Instagram, que é bem mais invasivo e
 pesado; aqui não. O Instagram grava cookies próprios dentro do quadro dele, como
 acontece em qualquer site que mostra post de rede social.
+
+Os quadros só são criados quando o visitante chega perto do final da página.
+Quem entra no site e não desce até lá **não carrega nada do Instagram**, e o
+tempo de abertura da página não é afetado.
 
 ---
 
@@ -97,7 +117,6 @@ acontece em qualquer site que mostra post de rede social.
 | `logo.svg` | Cabeçalho, rodapé **e** ícone da aba | Logo oficial, **colorido**, fundo transparente |
 | `retrato-professora.svg` | Topo da página, à direita | Retrato **vertical** da Betina, luz natural |
 | `ambiente-aula.svg` | Seção "Sobre" | Ambiente de aula ou o chimarrão, **horizontal** |
-| `favicon.svg` | Não é mais usado | Pode apagar |
 
 **Logo:** o arquivo `logo.svg` que está no site hoje ficou **todo preto** — a
 conversão para vetor perdeu o verde e o terracota. Substitua por uma versão
@@ -157,7 +176,7 @@ aprovada. Para ativar:
 ## O que NÃO mexer sem falar com o desenvolvedor
 
 - `assets/css/styles.css` — cores, tamanhos e o comportamento no celular.
-- `assets/js/main.js` — o menu do celular.
+- `assets/js/main.js` — o menu do celular e os quadros do Instagram.
 - `vercel.json` — regras de segurança da publicação.
 - `design/` — cópia do design original, guardada como referência.
 

@@ -25,7 +25,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<!-- FONTES: carregadas sem travar o desenho da página. Se o Google Fonts estiver
+     lento ou bloqueado (acontece em rede de empresa), o site aparece do mesmo
+     jeito, com as fontes de reserva, em vez de ficar em branco esperando. -->
+<link id="fonte-google" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/css/styles.css">
 <script src="/assets/js/main.js" defer></script>
 </head>
@@ -74,7 +78,7 @@
     <div class="hero-text">
       <p class="script script-hero">¡Hola! Que bom te ver por aqui.</p>
       <h1 class="hero-title">Espanhol que se aprende<br><em>conversando</em> — e com a cuia na mão.</h1>
-      <p class="hero-lead">Aulas online e programas corporativos in company com a professora Betina. Uma hora por semana que parece uma boa conversa — com método, correção cuidadosa e progresso que você escuta.</p>
+      <p class="hero-lead">Aulas online e programas in company com a professora Betina. Encontros que parecem uma boa conversa — com método, correção cuidadosa e progresso que você escuta.</p>
       <div class="hero-actions">
         <a class="btn" href="#contato">Quero estudar espanhol</a>
         <a class="link-underline link-olive" href="#metodo">Ver como funciona</a>
@@ -109,8 +113,8 @@
       <!-- TEXTO PROVISÓRIO: descrição genérica, sem formação, tempo de experiência ou cidade.
            A professora deve adaptar com os dados reais antes de publicar (ver PERSONALIZAR.md). -->
       <p class="body-lg">Sou a Betina, professora de espanhol. Dou aula para quem quer viajar, morar fora, negociar com clientes de outros países ou simplesmente voltar a estudar algo por prazer.</p>
-      <p class="body-lg">Comecei a chamar o meu trabalho de <em>Español y Mate</em> porque as minhas melhores aulas sempre aconteceram assim: cuia na mesa, erro corrigido sem susto e assunto de verdade. Aprender um idioma é um encontro humano — a gramática vem no meio da conversa, no tempo de cada aluno.</p>
-      <p class="body-lg">Atendo alunos no online, de onde eles estiverem, e equipes em empresas no formato in company, com material próprio e devolutiva escrita depois de cada encontro.</p>
+      <p class="body-lg">Comecei a chamar o meu trabalho de <em lang="es">Español y Mate</em> porque as minhas melhores aulas sempre aconteceram assim: cuia na mesa, erro corrigido sem susto e assunto de verdade. Aprender um idioma é um encontro humano — a gramática vem no meio da conversa, no tempo de cada aluno.</p>
+      <p class="body-lg">Atendo alunos online, de onde eles estiverem, e equipes de empresas no formato in company, com material próprio e devolutiva escrita depois de cada encontro.</p>
       <p class="script script-sobre">Te espero na próxima ronda.</p>
     </div>
   </section>
@@ -124,11 +128,11 @@
           <span class="oferta-num">01</span>
           <h3 class="h3">Aulas online</h3>
         </div>
-        <p class="oferta-desc">Encontros ao vivo on-line ou presenciais na empresa, no seu horário. Plano de estudo próprio, aprendizado e conversa desde a primeira aula.</p>
+        <p class="oferta-desc">Encontros ao vivo, no seu horário, de onde você estiver. Plano de estudo individual, com conversa em espanhol desde a primeira aula.</p>
         <ul class="lista">
           <li><span aria-hidden="true">—</span>Espanhol geral, conversação e pronúncia</li>
           <li><span aria-hidden="true">—</span>Preparação para DELE, CELU e entrevistas, com simulados</li>
-          <li><span aria-hidden="true">—</span>Pacotes semanais ou duas vezes por semana</li>
+          <li><span aria-hidden="true">—</span>Encontros uma ou duas vezes por semana</li>
         </ul>
         <a class="link-underline" href="#contato">Reservar uma conversa inicial</a>
       </article>
@@ -140,9 +144,9 @@
         <p class="oferta-desc">Programas in company para times que negociam, atendem ou viajam em espanhol. Vou até a empresa, com turmas organizadas por nível e acompanhamento personalizado.</p>
         <ul class="lista">
           <li><span aria-hidden="true">—</span>Diagnóstico de nível de toda a equipe</li>
-          <li><span aria-hidden="true">—</span>Turmas personalizadas de acordo com as necessidades da empresa</li>
+          <li><span aria-hidden="true">—</span>Turmas montadas conforme a necessidade da empresa</li>
           <li><span aria-hidden="true">—</span>Vocabulário do setor: comercial, jurídico, técnico</li>
-          <li><span aria-hidden="true">—</span>Acompanhamento próximo no desenvolvimento dos estudantes</li>
+          <li><span aria-hidden="true">—</span>Acompanhamento próximo do desenvolvimento de cada aluno</li>
         </ul>
         <a class="link-underline" href="#contato">Pedir uma proposta para a empresa</a>
       </article>
@@ -196,6 +200,9 @@
 
   <section class="section section-alunos" id="alunos">
     <p class="kicker">Alunos</p>
+    <!-- DEPOIMENTOS: vieram do design de aprovação e precisam ser confirmados.
+         Se não forem reais, troque pelos verdadeiros ou retire a seção inteira
+         (ver PERSONALIZAR.md). -->
     <div class="grid-2 grid-alunos">
       <blockquote class="depoimento">
         <p>“Eu tinha vergonha de falar. Na terceira aula eu já estava contando o meu fim de semana inteiro em espanhol, rindo dos meus próprios erros.”</p>
@@ -213,7 +220,7 @@
     <div class="faq">
       <div class="faq-item">
         <h3 class="h3-sm">Preciso ter estudado espanhol antes?</h3>
-        <p>Não. Recebo tanto quem começa do zero quanto quem já fala e quer perder o sotaque de improviso.</p>
+        <p>Não. Recebo tanto quem começa do zero quanto quem já fala alguma coisa e quer ganhar naturalidade e confiança.</p>
       </div>
       <div class="faq-item">
         <h3 class="h3-sm">Como são as aulas online?</h3>
@@ -225,14 +232,14 @@
       </div>
       <div class="faq-item">
         <h3 class="h3-sm">E se eu precisar remarcar?</h3>
-        <p>Com 24 horas de aviso a aula é reposta na mesma semana, sem cobrança extra.</p>
+        <p>Com 24 horas de aviso, a aula é reposta na mesma semana, sem cobrança extra.</p>
       </div>
     </div>
   </section>
 
   <section class="section section-contato" id="contato">
     <div class="contato-text">
-      <p class="script script-hero">¿Nos vemos?</p>
+      <p class="script script-hero" lang="es">¿Nos vemos?</p>
       <h2 class="h2 h2-contato">Vamos combinar a sua primeira aula.</h2>
       <p class="contato-lead">Me conte onde você está no espanhol e o que quer alcançar. Respondo pessoalmente em até um dia útil, com dois horários possíveis para a conversa inicial.</p>
       <!-- E-MAIL: trocar pelo endereço real antes de publicar (ver PERSONALIZAR.md) -->
@@ -266,93 +273,56 @@
         <p class="kicker" id="instagram-titulo">Instagram</p>
         <h2 class="h2 h2-instagram">O dia a dia das aulas, em espanhol.</h2>
       </div>
-      <div class="insta-head-acoes">
-        <a class="link-underline insta-perfil" href="https://www.instagram.com/betina.simon.9" target="_blank" rel="noopener">Seguir @betina.simon.9</a>
-        <div class="insta-setas">
-          <button class="insta-seta insta-seta-prev" id="insta-prev" type="button" aria-controls="insta-track" aria-label="Ver os posts anteriores">
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
-              <path d="M15 5 L8 12 L15 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <button class="insta-seta insta-seta-next" id="insta-next" type="button" aria-controls="insta-track" aria-label="Ver os próximos posts">
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
-              <path d="M9 5 L16 12 L9 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-      </div>
+      <a class="link-underline insta-perfil" href="https://www.instagram.com/betina.simon.9" target="_blank" rel="noopener">Seguir @betina.simon.9</a>
     </div>
 
-    <div class="insta-carrossel">
-      <ul class="insta-track" id="insta-track" tabindex="0" role="region" aria-label="Posts do Instagram — role para o lado para ver mais">
-      <li class="insta-item" data-post="">
-        <!-- POST 1: cole o link do post nas aspas vazias da linha de cima.
-             Sem link, aparece o card de exemplo abaixo. -->
-        <a class="insta-post" href="https://www.instagram.com/betina.simon.9" target="_blank" rel="noopener">
+    <ul class="insta-grid">
+      <li class="insta-item" data-post="https://www.instagram.com/reel/DGa4V3hxFPY/">
+        <!-- POST 1: o endereço está no data-post da linha de cima. Para trocar,
+             cole outro link do Instagram ali (ver PERSONALIZAR.md). -->
+        <a class="insta-post" href="https://www.instagram.com/reel/DGa4V3hxFPY/" target="_blank" rel="noopener" aria-label="Ver a publicação 1 no Instagram de @betina.simon.9">
           <span class="insta-thumb">
-            <img src="/assets/img/instagram/post-exemplo.svg" alt="" width="600" height="600" loading="lazy" decoding="async">
+            <svg class="insta-glifo" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+              <circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.2"/>
+              <circle cx="17.1" cy="6.9" r="1.05" fill="currentColor"/>
+            </svg>
+            <span class="insta-thumb-texto">Publicação no Instagram</span>
           </span>
-          <span class="insta-legenda">Post de exemplo 1 — trocar imagem e link</span>
-          <span class="insta-ver" aria-hidden="true">Ver no Instagram</span>
+          <span class="insta-ver">Ver no Instagram</span>
         </a>
       </li>
-      <li class="insta-item" data-post="">
-        <!-- POST 2: cole o link do post nas aspas vazias da linha de cima.
-             Sem link, aparece o card de exemplo abaixo. -->
-        <a class="insta-post" href="https://www.instagram.com/betina.simon.9" target="_blank" rel="noopener">
+      <li class="insta-item" data-post="https://www.instagram.com/p/DFGk_b2SzQl/">
+        <!-- POST 2: o endereço está no data-post da linha de cima. Para trocar,
+             cole outro link do Instagram ali (ver PERSONALIZAR.md). -->
+        <a class="insta-post" href="https://www.instagram.com/p/DFGk_b2SzQl/" target="_blank" rel="noopener" aria-label="Ver a publicação 2 no Instagram de @betina.simon.9">
           <span class="insta-thumb">
-            <img src="/assets/img/instagram/post-exemplo.svg" alt="" width="600" height="600" loading="lazy" decoding="async">
+            <svg class="insta-glifo" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+              <circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.2"/>
+              <circle cx="17.1" cy="6.9" r="1.05" fill="currentColor"/>
+            </svg>
+            <span class="insta-thumb-texto">Publicação no Instagram</span>
           </span>
-          <span class="insta-legenda">Post de exemplo 2 — trocar imagem e link</span>
-          <span class="insta-ver" aria-hidden="true">Ver no Instagram</span>
+          <span class="insta-ver">Ver no Instagram</span>
         </a>
       </li>
-      <li class="insta-item" data-post="">
-        <!-- POST 3: cole o link do post nas aspas vazias da linha de cima.
-             Sem link, aparece o card de exemplo abaixo. -->
-        <a class="insta-post" href="https://www.instagram.com/betina.simon.9" target="_blank" rel="noopener">
+      <li class="insta-item" data-post="https://www.instagram.com/p/CYFNL9JvnFH/">
+        <!-- POST 3: o endereço está no data-post da linha de cima. Para trocar,
+             cole outro link do Instagram ali (ver PERSONALIZAR.md). -->
+        <a class="insta-post" href="https://www.instagram.com/p/CYFNL9JvnFH/" target="_blank" rel="noopener" aria-label="Ver a publicação 3 no Instagram de @betina.simon.9">
           <span class="insta-thumb">
-            <img src="/assets/img/instagram/post-exemplo.svg" alt="" width="600" height="600" loading="lazy" decoding="async">
+            <svg class="insta-glifo" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+              <circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.2"/>
+              <circle cx="17.1" cy="6.9" r="1.05" fill="currentColor"/>
+            </svg>
+            <span class="insta-thumb-texto">Publicação no Instagram</span>
           </span>
-          <span class="insta-legenda">Post de exemplo 3 — trocar imagem e link</span>
-          <span class="insta-ver" aria-hidden="true">Ver no Instagram</span>
+          <span class="insta-ver">Ver no Instagram</span>
         </a>
       </li>
-      <li class="insta-item" data-post="">
-        <!-- POST 4: cole o link do post nas aspas vazias da linha de cima.
-             Sem link, aparece o card de exemplo abaixo. -->
-        <a class="insta-post" href="https://www.instagram.com/betina.simon.9" target="_blank" rel="noopener">
-          <span class="insta-thumb">
-            <img src="/assets/img/instagram/post-exemplo.svg" alt="" width="600" height="600" loading="lazy" decoding="async">
-          </span>
-          <span class="insta-legenda">Post de exemplo 4 — trocar imagem e link</span>
-          <span class="insta-ver" aria-hidden="true">Ver no Instagram</span>
-        </a>
-      </li>
-      <li class="insta-item" data-post="">
-        <!-- POST 5: cole o link do post nas aspas vazias da linha de cima.
-             Sem link, aparece o card de exemplo abaixo. -->
-        <a class="insta-post" href="https://www.instagram.com/betina.simon.9" target="_blank" rel="noopener">
-          <span class="insta-thumb">
-            <img src="/assets/img/instagram/post-exemplo.svg" alt="" width="600" height="600" loading="lazy" decoding="async">
-          </span>
-          <span class="insta-legenda">Post de exemplo 5 — trocar imagem e link</span>
-          <span class="insta-ver" aria-hidden="true">Ver no Instagram</span>
-        </a>
-      </li>
-      <li class="insta-item" data-post="">
-        <!-- POST 6: cole o link do post nas aspas vazias da linha de cima.
-             Sem link, aparece o card de exemplo abaixo. -->
-        <a class="insta-post" href="https://www.instagram.com/betina.simon.9" target="_blank" rel="noopener">
-          <span class="insta-thumb">
-            <img src="/assets/img/instagram/post-exemplo.svg" alt="" width="600" height="600" loading="lazy" decoding="async">
-          </span>
-          <span class="insta-legenda">Post de exemplo 6 — trocar imagem e link</span>
-          <span class="insta-ver" aria-hidden="true">Ver no Instagram</span>
-        </a>
-      </li>
-      </ul>
-    </div>
+    </ul>
   </section>
 
 </main>
