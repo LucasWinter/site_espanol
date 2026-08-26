@@ -14,14 +14,14 @@ ambiente de aula e logo) e o endereço do site.
 ## 1. E-mail
 
 **Arquivo:** `index.html`
-**Procure por:** `ola@espanolymate.com.br` — aparece **3 vezes**.
+**Procure por:** `ola@espanolymate.com.br` — aparece **2 vezes**, na mesma
+linha da lista de contato (uma no link, outra no texto que o visitante lê).
 
-Troque as 3 pelo e-mail verdadeiro. Atenção: em uma delas o endereço aparece
-duas vezes na mesma linha (uma no link, outra no texto que o visitante lê).
+Troque as 2 pelo e-mail verdadeiro.
 
-O botão "Quero estudar espanhol" da seção de contato abre o programa de e-mail
-já com o assunto preenchido. Para mudar o assunto, edite o trecho depois de
-`?subject=` (espaços viram `%20`).
+O botão "Quero estudar espanhol" da seção de contato **abre o WhatsApp**, com a
+mesma mensagem pronta do link de WhatsApp da lista — o e-mail fica só como
+opção na lista de contato.
 
 ---
 
@@ -54,7 +54,7 @@ legenda ou a foto mudarem lá, mudam aqui sozinhas.
 
 Os 3 que estão no ar hoje:
 
-1. `https://www.instagram.com/reel/DGa4V3hxFPY/`
+1. `https://www.instagram.com/p/DQCnnm-kXRw/`
 2. `https://www.instagram.com/p/DFGk_b2SzQl/`
 3. `https://www.instagram.com/p/CYFNL9JvnFH/`
 
@@ -116,7 +116,7 @@ tempo de abertura da página não é afetado.
 | --- | --- | --- |
 | `logo.svg` | Cabeçalho, rodapé **e** ícone da aba | Logo oficial, **colorido**, fundo transparente |
 | `retrato-professora.svg` | Topo da página, à direita | Retrato **vertical** da Betina, luz natural |
-| `ambiente-aula.svg` | Seção "Sobre" | Ambiente de aula ou o chimarrão, **horizontal** |
+| `cuia_site1.svg` | Seção "Sobre" | Já é a ilustração aprovada da cuia com livros |
 
 **Logo:** o arquivo `logo.svg` que está no site hoje ficou **todo preto** — a
 conversão para vetor perdeu o verde e o terracota. Substitua por uma versão
@@ -130,8 +130,7 @@ Os arquivos de hoje são desenhos de exemplo. Para trocar:
    1200 a 1600 pixels, até ~400 KB para o site continuar rápido).
 2. No `index.html`, procure por `retrato-professora.svg` e troque pelo nome do
    novo arquivo, **com a extensão nova** (ex.: `retrato-professora.jpg`).
-3. Faça o mesmo com `ambiente-aula.svg`.
-4. Ajuste o texto do `alt="..."` ao lado, que descreve a foto para quem usa
+3. Ajuste o texto do `alt="..."` ao lado, que descreve a foto para quem usa
    leitor de tela e para o Google.
 
 As fotos são recortadas automaticamente para preencher o espaço, então deixe o
